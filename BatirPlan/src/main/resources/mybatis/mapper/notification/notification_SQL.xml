@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.batirplan.notification.mapper.NotificationMapper">
+    <insert id="saveNotification">
+        INSERT INTO TB_REAL_TIME_NOTIFICATION (NTCN_NO, RCVER, SJ, CN, TY_CODE, STTUS, CNNC_URL, CREAT_DT)
+        VALUES (NOTIFICATION_SEQ.NEXTVAL, #{rcver}, #{sj}, #{cn}, #{tyCode}, 'UNREAD', #{cnncUrl}, SYSDATE)
+    </insert>
+
+    <select id="getNotificationsByReceiver" resultType="kr.or.batirplan.notification.vo.NotificationVO">
+        SELECT * FROM TB_REAL_TIME_NOTIFICATION WHERE RCVER = #{rcver} ORDER BY CREAT_DT DESC
+    </select>
+</mapper>
+
+
+  
+  
